@@ -25,23 +25,29 @@ export default function Contact() {
 
     try {
       const formData = new FormData(event.target);
-      formData.append("access_key", "a023de76-a415-41c2-86a2-a0fad03e8061");
-      formData.append("h-captcha-response", captchaToken);
+      const data = {
+        access_key: "a023de76-a415-41c2-86a2-a0fad03e8061",
+        name: formData.get("name"),
+        email: formData.get("email"),
+        message: formData.get("message"),
+        "h-captcha-response": captchaToken,
+      };
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
 
-      const data = await response.json();
+      const result = await response.json();
 
-      if (data.success) {
+      if (result.success) {
         setResult("success");
         event.target.reset();
         setCaptchaToken("");
         captchaRef.current?.resetCaptcha();
       } else {
-        console.error("Web3Forms error:", data);
+        console.error("Web3Forms error:", result);
         setResult("error");
       }
     } catch (err) {
