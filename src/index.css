@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: #0f1117;
+  color: #e5e7eb;
+  font-family: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+::selection {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #e5e7eb;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f1117;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2d37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* Focus visible for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Card hover/focus styles */
+.card-interactive {
+  border: 1px solid #2a2d37;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.card-interactive:hover,
+.card-interactive:focus-within {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.06);
+  transform: translateY(-2px);
+}
+
+/* Button hover */
+.btn-primary {
+  background: #3b82f6;
+  color: #ffffff;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+
+.btn-outline-blue {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #3b82f6;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btn-outline-blue:hover {
+  background: #3b82f6;
+  color: #0f1117;
+}
+
+/* Footer icon hover */
+.footer-icon {
+  color: #9ca3af;
+  transition: color 0.2s;
+}
+
+.footer-icon:hover {
+  color: #3b82f6;
+}
+
+/* Nav card icon circles */
+.icon-circle {
+  border: 2px solid #2a2d37;
+  transition: border-color 0.3s;
+}
+
+.card-interactive:hover .icon-circle {
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Subtle page entrance animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease-out forwards;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fadeUp 0.5s ease-out 0.1s forwards;
+  opacity: 0;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fadeUp 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+}
