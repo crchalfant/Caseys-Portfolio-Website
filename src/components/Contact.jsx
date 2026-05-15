@@ -41,9 +41,11 @@ export default function Contact() {
         setCaptchaToken("");
         captchaRef.current?.resetCaptcha();
       } else {
+        console.error("Web3Forms error:", data);
         setResult("error");
       }
-    } catch {
+    } catch (err) {
+      console.error("Form submission error:", err);
       setResult("error");
     } finally {
       setIsSubmitting(false);
